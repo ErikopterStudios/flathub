@@ -1,0 +1,23 @@
+id: io.github.erikopterstudios.milkilang
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: milkilang
+
+# 🌐 PERMISOS DE CONEXIÓN GLOBAL (Para Aternos y Roblox)
+finish-args:
+  - --share=network
+  - --share=ipc
+  - --socket=x11
+  - --socket=pulseaudio
+
+modules:
+  - name: python3-dependencies
+    buildsystem: simple
+    build-commands:
+      - pip3 install --user pyserial ultralytics opencv-python
+
+  - name: milkislang-core
+    buildsystem: simple
+    build-commands:
+      - install -D motor_milki.py /app/bin/milkilang
